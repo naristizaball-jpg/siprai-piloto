@@ -1,0 +1,20 @@
+app = "siprai-piloto"
+primary_region = "mia"
+
+[build]
+
+[env]
+  SIPRAI_DATA_DIR = "/data"
+  SIPRAI_HTTPS_ONLY = "1"
+  SIPRAI_CREATE_DEMO_USERS = "0"
+
+[[mounts]]
+  source = "siprai_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0

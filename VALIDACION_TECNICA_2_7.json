@@ -1,0 +1,41 @@
+{
+  "syntax_errors": [],
+  "pilot_acceptance": {
+    "passed": 8,
+    "total": 8,
+    "checks": [
+      [
+        "login_prof",
+        true
+      ],
+      [
+        "login_student",
+        true
+      ],
+      [
+        "prof_access",
+        true
+      ],
+      [
+        "student_access",
+        true
+      ],
+      [
+        "deny_other",
+        true
+      ],
+      [
+        "upload",
+        true
+      ],
+      [
+        "anti_fabrication",
+        true
+      ],
+      [
+        "export",
+        true
+      ]
+    ]
+  }
+}

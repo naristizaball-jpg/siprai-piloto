@@ -1,0 +1,234 @@
+{
+  "T01": {
+    "name": "Canvas de oportunidad de investigación",
+    "gate": "G0 - Oportunidad",
+    "purpose": "Convertir una observación en oportunidad de conocimiento y decisión.",
+    "fields": [
+      [
+        "situacion_observable",
+        "Situación observable",
+        "O"
+      ],
+      [
+        "actores_afectados",
+        "Actores afectados/usuarios",
+        "O"
+      ],
+      [
+        "evidencia_inicial",
+        "Evidencia inicial",
+        "E"
+      ],
+      [
+        "tension_incertidumbre",
+        "Tensión, contradicción o incertidumbre",
+        "O"
+      ],
+      [
+        "que_se_sabe_no_se_sabe",
+        "Qué se sabe / qué no se sabe",
+        "E"
+      ],
+      [
+        "decision_mejorable",
+        "Decisión que podría mejorar",
+        "O"
+      ],
+      [
+        "contribucion_potencial",
+        "Contribución potencial",
+        "O"
+      ],
+      [
+        "linea_alineacion",
+        "Línea SIPRAI y alineación",
+        "O"
+      ],
+      [
+        "riesgos_limitaciones",
+        "Riesgos/limitaciones iniciales",
+        "C"
+      ],
+      [
+        "siguiente_experimento_busqueda",
+        "Siguiente experimento o búsqueda",
+        "O"
+      ]
+    ]
+  },
+  "T02": {
+    "name": "Matriz de problema y vacío",
+    "gate": "G1 - Problema",
+    "purpose": "Construir un problema investigable con vacío validado.",
+    "fields": [
+      [
+        "fenomeno_contexto",
+        "Fenómeno y contexto",
+        "O"
+      ],
+      [
+        "situacion_patron",
+        "Situación o patrón observado",
+        "O"
+      ],
+      [
+        "consecuencia_importancia",
+        "Consecuencia/importancia",
+        "O"
+      ],
+      [
+        "conocimiento_existente",
+        "Conocimiento existente",
+        "E"
+      ],
+      [
+        "vacio_principal",
+        "Vacío principal",
+        "O/E"
+      ],
+      [
+        "tipo_vacio",
+        "Tipo de vacío",
+        ""
+      ],
+      [
+        "poblacion_unidad_territorio",
+        "Población/unidad/territorio",
+        "O"
+      ],
+      [
+        "limites",
+        "Límites temporal y conceptual",
+        "O"
+      ],
+      [
+        "supuestos_desafiar",
+        "Supuestos a desafiar",
+        "C"
+      ],
+      [
+        "formulacion_sintetica",
+        "Formulación sintética del problema",
+        "O"
+      ]
+    ]
+  },
+  "T03": {
+    "name": "Matriz de alineación científica",
+    "gate": "G2 - Coherencia",
+    "purpose": "Alinear pregunta, objetivos, datos, análisis y contribución.",
+    "matrix_columns": [
+      "Pregunta/subpregunta",
+      "Objetivo",
+      "Concepto/variable",
+      "Fuente/dato",
+      "Método/análisis",
+      "Producto/contribución"
+    ],
+    "checks": [
+      "Cada objetivo responde una pregunta",
+      "Cada objetivo tiene datos disponibles",
+      "El análisis produce evidencia para el objetivo",
+      "La contribución no excede el diseño",
+      "Existe una pregunta de integración si es mixto",
+      "Ética y datos son coherentes con las fuentes"
+    ]
+  },
+  "T04": {
+    "name": "Research Charter - Acta de investigación",
+    "gate": "G3 - Autorización",
+    "purpose": "Autorizar el proyecto y definir valor, alcance, roles y reglas.",
+    "fields": [
+      [
+        "titulo_id",
+        "Título e ID",
+        "O"
+      ],
+      [
+        "product_goal",
+        "Product Goal / propósito",
+        "O"
+      ],
+      [
+        "pregunta_central",
+        "Pregunta central",
+        "O"
+      ],
+      [
+        "usuarios_valor",
+        "Usuarios y valor esperado",
+        "O"
+      ],
+      [
+        "alcance",
+        "Alcance incluido/excluido",
+        "O"
+      ],
+      [
+        "productos_comprometidos",
+        "Productos comprometidos",
+        "O"
+      ],
+      [
+        "equipo_credit",
+        "Equipo, roles CRediT y dedicación",
+        "O"
+      ],
+      [
+        "hitos_puertas",
+        "Hitos/puertas y fecha objetivo",
+        "O"
+      ],
+      [
+        "presupuesto",
+        "Presupuesto/recursos",
+        "C"
+      ],
+      [
+        "riesgos_supuestos",
+        "Riesgos críticos y supuestos",
+        "O"
+      ],
+      [
+        "reglas_autoria_datos_ia",
+        "Reglas de autoría, datos e IA",
+        "O"
+      ],
+      [
+        "criterios_pausa_cierre",
+        "Criterios de pausa/cierre",
+        "O"
+      ]
+    ]
+  },
+  "T05": {
+    "name": "Plan maestro y roadmap de evidencia",
+    "gate": "G4 - Planificación",
+    "purpose": "Traducir el charter en fases, puertas, entregables y dependencias.",
+    "roadmap_columns": [
+      "Fase",
+      "Pregunta de salida",
+      "Entregable",
+      "Dependencias",
+      "Responsable",
+      "Puerta/fecha"
+    ],
+    "phases": [
+      "Descubrimiento",
+      "Protocolo",
+      "Preparación/piloto",
+      "Producción de datos",
+      "Análisis",
+      "Integración/interpretación",
+      "Reporte/transferencia",
+      "Cierre/preservación"
+    ],
+    "constraints": [
+      "Tiempo",
+      "Personas/competencias",
+      "Datos/acceso",
+      "Software/equipo",
+      "Presupuesto"
+    ]
+  }
+}

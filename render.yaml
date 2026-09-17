@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: siprai-piloto
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: SIPRAI_DATA_DIR
+        value: /data
+      - key: SIPRAI_HTTPS_ONLY
+        value: "1"
+      - key: SIPRAI_CREATE_DEMO_USERS
+        value: "0"
+      - key: SIPRAI_SESSION_SECRET
+        generateValue: true
+      - key: SIPRAI_ADMIN_EMAIL
+        sync: false
+      - key: SIPRAI_ADMIN_PASSWORD
+        sync: false
+      - key: SIPRAI_ADMIN_NAME
+        value: Profesor SIPRAI
+    disk:
+      name: siprai-data
+      mountPath: /data
+      sizeGB: 1

@@ -1,0 +1,180 @@
+{
+  "idea": [
+    "T01",
+    "T02",
+    "T03"
+  ],
+  "oportunidad": [
+    "T01",
+    "T02",
+    "T03"
+  ],
+  "tema": [
+    "T01",
+    "T02",
+    "T03"
+  ],
+  "proyecto nuevo": [
+    "T04",
+    "T05"
+  ],
+  "equipo": [
+    "T04",
+    "T05"
+  ],
+  "alcance": [
+    "T04",
+    "T05"
+  ],
+  "persona": [
+    "T06",
+    "T07",
+    "T08",
+    "T09"
+  ],
+  "entrevista": [
+    "T06",
+    "T07",
+    "T19",
+    "T20"
+  ],
+  "datos sensibles": [
+    "T06",
+    "T08",
+    "T09"
+  ],
+  "prisma": [
+    "T10",
+    "T11",
+    "T12",
+    "T13"
+  ],
+  "spar": [
+    "T10",
+    "T11",
+    "T12",
+    "T13"
+  ],
+  "vosviewer": [
+    "T14"
+  ],
+  "bibliometr": [
+    "T14"
+  ],
+  "encuesta": [
+    "T15",
+    "T16",
+    "T17",
+    "T18"
+  ],
+  "experimento": [
+    "T15",
+    "T16",
+    "T17",
+    "T18"
+  ],
+  "regresion": [
+    "T15",
+    "T16",
+    "T17"
+  ],
+  "regresión": [
+    "T15",
+    "T16",
+    "T17"
+  ],
+  "cualitativ": [
+    "T19",
+    "T20",
+    "T21"
+  ],
+  "mixt": [
+    "T22"
+  ],
+  "intervencion": [
+    "T23",
+    "T24"
+  ],
+  "intervención": [
+    "T23",
+    "T24"
+  ],
+  "prototipo": [
+    "T23",
+    "T24"
+  ],
+  "riesgo": [
+    "T25"
+  ],
+  "supuesto": [
+    "T25"
+  ],
+  "decision": [
+    "T25"
+  ],
+  "decisión": [
+    "T25"
+  ],
+  "scrum": [
+    "T26"
+  ],
+  "kanban": [
+    "T26"
+  ],
+  "sprint": [
+    "T26"
+  ],
+  "backlog": [
+    "T26"
+  ],
+  "reproduc": [
+    "T27"
+  ],
+  "repositorio": [
+    "T27"
+  ],
+  "agente": [
+    "T28"
+  ],
+  "gpt": [
+    "T28"
+  ],
+  "rag": [
+    "T28"
+  ],
+  "ia": [
+    "T28"
+  ],
+  "articulo": [
+    "T29"
+  ],
+  "artículo": [
+    "T29"
+  ],
+  "manuscrito": [
+    "T29"
+  ],
+  "someter": [
+    "T29"
+  ],
+  "publicar": [
+    "T29"
+  ],
+  "cierre": [
+    "T30"
+  ],
+  "transfer": [
+    "T30"
+  ],
+  "lecciones": [
+    "T30"
+  ],
+  "vacío": [
+    "T02",
+    "T03"
+  ],
+  "vacio": [
+    "T02",
+    "T03"
+  ]
+}

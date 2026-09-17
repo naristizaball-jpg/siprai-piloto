@@ -1,0 +1,46 @@
+{
+  "passed": 10,
+  "total": 10,
+  "checks": [
+    [
+      "login",
+      true
+    ],
+    [
+      "acl_grant",
+      true
+    ],
+    [
+      "members",
+      true
+    ],
+    [
+      "reset_pwd",
+      true
+    ],
+    [
+      "change_pwd",
+      true
+    ],
+    [
+      "deactivate",
+      true
+    ],
+    [
+      "acl_revoke",
+      true
+    ],
+    [
+      "backup",
+      true
+    ],
+    [
+      "anti_fabrication",
+      true
+    ],
+    [
+      "persistent_dir",
+      true
+    ]
+  ]
+}

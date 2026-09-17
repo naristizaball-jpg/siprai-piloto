@@ -1,0 +1,37 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SIPRAI 2.7 Piloto</title><style>
+:root{--nav:#10233f;--blue:#1f4d8f;--bg:#f5f7fb;--line:#dbe4ef;--green:#277a55;--red:#a33}
+*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial;background:var(--bg);color:#172337}header{background:var(--nav);color:#fff;padding:18px 28px}
+.wrap{max-width:1280px;margin:20px auto;padding:0 18px}.grid{display:grid;grid-template-columns:350px 1fr;gap:16px}.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
+input,textarea,select{width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;margin:5px 0 9px}button{background:var(--blue);color:#fff;border:0;border-radius:8px;padding:9px 12px;cursor:pointer;margin:2px}
+.hidden{display:none}.chat{white-space:pre-wrap;border:1px solid var(--line);padding:10px;border-radius:8px;margin:8px 0}.ai{border-left:4px solid #6f52c9}.small{font-size:12px;color:#68788d}.ok{color:var(--green);font-weight:700}.err{color:var(--red)}
+table{border-collapse:collapse;width:100%;font-size:13px}th,td{border-bottom:1px solid var(--line);padding:7px;text-align:left}@media(max-width:900px){.grid{grid-template-columns:1fr}}
+</style></head><body><header><h1>SIPRAI 2.7</h1><div>Piloto académico multiusuario</div></header>
+<div class="wrap">
+<div id="login" class="card" style="max-width:460px;margin:60px auto"><h2>Ingreso</h2><input id="email" value="profesor@demo.local"><input id="password" type="password" value="Profesor123!"><button onclick="doLogin()">Ingresar</button><p class="small">Cuentas demo solo para prueba local.</p><div id="loginmsg"></div></div>
+<div id="app" class="hidden"><div class="grid">
+<div>
+<div class="card"><b id="who"></b><br><span id="role" class="small"></span><p><button onclick="logout()">Salir</button></p></div>
+<div class="card"><h3>Mis proyectos</h3><select id="projects" onchange="loadProject()"></select><div id="projectInfo" class="small"></div></div>
+<div class="card"><h3>Archivos</h3><input id="file" type="file"><button onclick="upload()">Cargar</button><div id="files" class="small"></div></div>
+<div id="admin" class="card hidden"><h3>Panel docente</h3><button onclick="loadDashboard()">Actualizar</button><div id="dash"></div><hr><h4>Crear estudiante</h4><input id="newname" placeholder="Nombre"><input id="newemail" placeholder="correo"><input id="newpass" placeholder="contraseña temporal"><button onclick="createStudent()">Crear cuenta</button></div>
+</div>
+<div>
+<div class="card"><h2>Profesor SIPRAI</h2><textarea id="msg" rows="5" placeholder="Consulte sobre la investigación..."></textarea><button onclick="ask()">Consultar</button><div id="chat"></div></div>
+<div class="card"><h3>Expediente</h3><input id="title" placeholder="Título"><input id="stage" placeholder="Etapa"><input id="journal" placeholder="Revista objetivo"><textarea id="question" placeholder="Pregunta"></textarea><textarea id="objective" placeholder="Objetivo"></textarea><textarea id="method" placeholder="Método"></textarea><button onclick="saveProject()">Guardar</button><button onclick="exportProject()">Exportar JSON</button></div>
+</div></div></div></div>
+<script>
+let me=null;
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+async function api(url,opt={}){let r=await fetch(url,opt);if(!r.ok){let t=await r.text();throw Error(t)}return r}
+async function doLogin(){try{let r=await api('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email.value,password:password.value})});let d=await r.json();me=d.user;login.classList.add('hidden');app.classList.remove('hidden');who.textContent=me.name;role.textContent=me.role;if(me.role==='professor')admin.classList.remove('hidden');await loadProjects();}catch(e){loginmsg.innerHTML='<span class=err>Ingreso no válido</span>'}}
+async function logout(){await fetch('/api/auth/logout',{method:'POST'});location.reload()}
+async function loadProjects(){let d=await (await api('/api/my/projects')).json();projects.innerHTML='';d.projects.forEach(p=>{let o=document.createElement('option');o.value=p;o.textContent=p;projects.appendChild(o)});if(d.projects.length)loadProject();else projectInfo.textContent='Sin proyectos asignados.'}
+async function loadProject(){let p=projects.value;if(!p)return;let d=await (await api('/api/project/'+encodeURIComponent(p))).json();let x=d.project;title.value=x.title||'';stage.value=x.stage||'';journal.value=x.journal||'';question.value=x.question||'';objective.value=x.objective||'';method.value=x.method||'';files.innerHTML=(d.uploads||[]).map(f=>'• '+esc(f.original_name)+' ('+Math.round(f.size_bytes/1024)+' KB)').join('<br>');projectInfo.textContent=(x.stage||'Sin etapa')+' · '+(d.decisions||[]).length+' decisiones';}
+async function saveProject(){let p=projects.value;if(!p)return;await api('/api/project/'+encodeURIComponent(p),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title:title.value,stage:stage.value,journal:journal.value,question:question.value,objective:objective.value,method:method.value})});alert('Expediente guardado')}
+async function ask(){let p=projects.value,m=msg.value.trim();if(!p||!m)return;chat.innerHTML+=`<div class=chat><b>Estudiante</b><br>${esc(m)}</div>`;msg.value='';let d=await (await api('/api/siprai/professor/'+encodeURIComponent(p),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:m})})).json();chat.innerHTML+=`<div class="chat ai"><b>SIPRAI</b><br>${esc(d.answer)}</div>`}
+async function upload(){let p=projects.value,f=file.files[0];if(!p||!f)return;let fd=new FormData();fd.append('file',f);await api('/api/project/'+encodeURIComponent(p)+'/upload',{method:'POST',body:fd});file.value='';await loadProject()}
+function exportProject(){let p=projects.value;if(p)location.href='/api/project/'+encodeURIComponent(p)+'/export'}
+async function loadDashboard(){let d=await (await api('/api/admin/dashboard')).json();dash.innerHTML='<table><tr><th>Proyecto</th><th>Etapa</th><th>Dec.</th><th>Arch.</th><th>Consultas</th></tr>'+d.projects.map(x=>`<tr><td>${esc(x.id)}<br><span class=small>${esc(x.title)}</span></td><td>${esc(x.stage)}</td><td>${x.decisions}</td><td>${x.uploads}</td><td>${x.trace}</td></tr>`).join('')+'</table>'}
+async function createStudent(){try{let r=await api('/api/admin/users',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:newname.value,email:newemail.value,password:newpass.value,role:'student'})});let d=await r.json();alert('Cuenta creada. ID '+d.user_id)}catch(e){alert('No se pudo crear: '+e.message)}}
+</script></body></html>

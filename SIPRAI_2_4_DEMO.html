@@ -1,0 +1,36 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SIPRAI 2.4</title><style>
+:root{--nav:#10233f;--blue:#1f4d8f;--bg:#f4f7fb;--line:#dbe4ef;--purple:#6f52c9;--green:#278258}
+*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial;background:var(--bg);color:#172337}
+header{background:var(--nav);color:white;padding:18px 28px}.wrap{max-width:1280px;margin:22px auto;padding:0 18px}
+.grid{display:grid;grid-template-columns:1fr 420px;gap:16px}.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px;margin-bottom:15px}
+textarea,input,select{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;margin:5px 0 10px}
+button{background:var(--blue);color:white;border:0;border-radius:8px;padding:10px 13px;cursor:pointer}
+.chat{white-space:pre-wrap;padding:12px;border:1px solid var(--line);border-radius:9px;margin:9px 0;background:#fff}.ai{border-left:4px solid var(--purple)}
+.pill{display:inline-block;padding:4px 8px;border-radius:999px;background:#eef3fb;margin:2px;font-size:11px}.small{font-size:12px;color:#68788d}
+.ev{background:#f7f9fc;border:1px solid var(--line);padding:10px;border-radius:8px;margin:7px 0}.ok{color:var(--green);font-weight:700}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+</style></head><body><header><h1>SIPRAI 2.4</h1><div>Profesor digital con enrutamiento, evidencia documental y trazabilidad</div></header>
+<div class="wrap"><div class="grid">
+<div>
+<div class="card"><h2>Profesor SIPRAI</h2><label>Proyecto</label><input id="pid" value="DEMO-001"><textarea id="msg" rows="5" placeholder="Ej.: Quiero entrevistar estudiantes y usar un agente de IA con memoria para analizar proyectos."></textarea><button onclick="ask()">Consultar</button><div id="chat"></div></div>
+<div class="card"><h2>Trazabilidad</h2><button onclick="trace()">Actualizar bitácora</button><div id="trace"></div></div>
+</div>
+<div>
+<div class="card"><h2>Qué registra cada respuesta</h2><span class="pill">Ruta</span><span class="pill">Documentos</span><span class="pill">Páginas</span><span class="pill">Plantillas</span><span class="pill">Estado</span><span class="pill">Próxima acción</span></div>
+<div class="card"><h2>Evidencia recuperada</h2><div id="evidence" class="small">Aún no hay consulta.</div></div>
+</div></div></div>
+<script>
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+async function ask(){
+ let p=pid.value.trim()||'DEMO-001',m=msg.value.trim();if(!m)return;
+ chat.innerHTML+=`<div class="chat"><b>Estudiante</b><br>${esc(m)}</div>`;msg.value='';
+ let r=await fetch('/api/siprai/professor/'+encodeURIComponent(p),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:m})});
+ let d=await r.json();chat.innerHTML+=`<div class="chat ai"><b>SIPRAI</b><br>${esc(d.answer)}</div>`;
+ evidence.innerHTML=(d.evidence||[]).map(x=>`<div class="ev"><b>Documento ${esc(x.doc)}, p. ${esc(x.page)}</b><br>${esc(x.snippet.slice(0,500))}</div>`).join('')||'Sin evidencia recuperada.';
+}
+async function trace(){
+ let p=pid.value.trim()||'DEMO-001';let r=await fetch('/api/siprai/trace/'+encodeURIComponent(p));let d=await r.json();
+ document.getElementById('trace').innerHTML=(d.trace||[]).map(x=>`<div class="ev"><b>${esc(x.ts)}</b> · ${esc(x.intent)}<br>Docs: ${esc((x.documents||[]).join(', '))}<br>Páginas: ${esc(JSON.stringify(x.pages||[]))}<br>Plantillas: ${esc((x.templates||[]).join(', '))}<br>Estado: <span class="ok">${esc(x.decision_state)}</span></div>`).join('')||'Sin registros.';
+}
+</script></body></html>

@@ -1,0 +1,25 @@
+{
+  "intent": "producto_aprobacion",
+  "docs": [
+    "15",
+    "METODO_ORIGEN",
+    "02",
+    "11",
+    "13"
+  ],
+  "templates": [
+    "T10",
+    "T11",
+    "T12",
+    "T13",
+    "T29"
+  ],
+  "citations": [
+    "[D15 p.8]",
+    "[D15 p.14]",
+    "[D15 p.19]",
+    "[D02 p.6]"
+  ],
+  "state": "EN VALIDACIÓN",
+  "next_action": "Revisar T29 y requisitos vigentes de la revista objetivo."
+}

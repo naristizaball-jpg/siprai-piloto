@@ -1,0 +1,131 @@
+{
+  "tests": [
+    {
+      "label": "IA con estudiantes/agente",
+      "intent": "ia_investigacion",
+      "docs": [
+        "13",
+        "02",
+        "11",
+        "15"
+      ],
+      "templates": [
+        "T06",
+        "T07",
+        "T19",
+        "T20",
+        "T28"
+      ],
+      "state": "EN VALIDACIÓN",
+      "evidence": [
+        [
+          "13",
+          20
+        ],
+        [
+          "13",
+          19
+        ],
+        [
+          "13",
+          3
+        ]
+      ]
+    },
+    {
+      "label": "Conclusiones sin resultados",
+      "intent": "producto_aprobacion",
+      "docs": [
+        "15",
+        "METODO_ORIGEN",
+        "02",
+        "11",
+        "13"
+      ],
+      "templates": [
+        "T29"
+      ],
+      "state": "PENDIENTE / NO SUSTENTABLE",
+      "evidence": [
+        [
+          "02",
+          10
+        ],
+        [
+          "11",
+          10
+        ],
+        [
+          "11",
+          11
+        ]
+      ]
+    },
+    {
+      "label": "SPAR-4-SLR",
+      "intent": "sintesis_literatura",
+      "docs": [
+        "04",
+        "05",
+        "03",
+        "06",
+        "11",
+        "13",
+        "14",
+        "15"
+      ],
+      "templates": [
+        "T10",
+        "T11",
+        "T12",
+        "T13"
+      ],
+      "state": "EN VALIDACIÓN",
+      "evidence": [
+        [
+          "05",
+          2
+        ],
+        [
+          "05",
+          5
+        ],
+        [
+          "05",
+          15
+        ]
+      ]
+    },
+    {
+      "label": "Selección metodológica",
+      "intent": "formulacion",
+      "docs": [
+        "03",
+        "01",
+        "02",
+        "14"
+      ],
+      "templates": [
+        "T19",
+        "T20",
+        "T21"
+      ],
+      "state": "EN VALIDACIÓN",
+      "evidence": [
+        [
+          "01",
+          1
+        ],
+        [
+          "01",
+          23
+        ],
+        [
+          "02",
+          2
+        ]
+      ]
+    }
+  ],
+  "trace_count": 4
+}

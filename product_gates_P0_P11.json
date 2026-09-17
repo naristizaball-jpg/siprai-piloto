@@ -1,0 +1,74 @@
+[
+  {
+    "code": "P0",
+    "name": "Necesidad",
+    "question": "¿Existe usuario, problema y propósito?",
+    "evidence": "Ficha de producto"
+  },
+  {
+    "code": "P1",
+    "name": "Identidad",
+    "question": "¿Tipo, proyecto, autores y versión están definidos?",
+    "evidence": "Metadatos"
+  },
+  {
+    "code": "P2",
+    "name": "Integridad",
+    "question": "¿Autoría, datos, citas, permisos y conflictos son correctos?",
+    "evidence": "Controles de integridad"
+  },
+  {
+    "code": "P3",
+    "name": "Rigor",
+    "question": "¿Método y razonamiento son adecuados al producto?",
+    "evidence": "Método y revisión"
+  },
+  {
+    "code": "P4",
+    "name": "Evidencia",
+    "question": "¿Las afirmaciones son trazables a evidencia?",
+    "evidence": "Datos, fuentes, código o corpus"
+  },
+  {
+    "code": "P5",
+    "name": "Transparencia",
+    "question": "¿Límites, incertidumbre y decisiones están declarados?",
+    "evidence": "Reporte y anexos"
+  },
+  {
+    "code": "P6",
+    "name": "Usabilidad",
+    "question": "¿El producto es comprensible y utilizable por su usuario?",
+    "evidence": "Prueba/revisión de usuario"
+  },
+  {
+    "code": "P7",
+    "name": "Reproducibilidad",
+    "question": "¿Puede reconstruirse o auditarse cuando aplica?",
+    "evidence": "Paquete T27"
+  },
+  {
+    "code": "P8",
+    "name": "Preservación",
+    "question": "¿Versiones, repositorio, PID y retención están resueltos?",
+    "evidence": "DMP/repositorio"
+  },
+  {
+    "code": "P9",
+    "name": "Revisión",
+    "question": "¿Pasó revisión interna pertinente?",
+    "evidence": "Acta/comentarios/respuestas"
+  },
+  {
+    "code": "P10",
+    "name": "Liberación",
+    "question": "¿Está autorizado para someter, divulgar o implementar?",
+    "evidence": "Decisión interna"
+  },
+  {
+    "code": "P11",
+    "name": "Seguimiento",
+    "question": "¿Existe plan de mantenimiento, corrección o retiro?",
+    "evidence": "Responsable y fecha"
+  }
+]

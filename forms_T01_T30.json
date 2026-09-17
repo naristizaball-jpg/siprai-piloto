@@ -1,0 +1,1281 @@
+{
+  "T01": {
+    "name": "Canvas de oportunidad de investigación",
+    "gate": "G0 - Oportunidad",
+    "purpose": "Convertir una observación en oportunidad de conocimiento y decisión.",
+    "fields": [
+      [
+        "situacion_observable",
+        "Situación observable",
+        "O"
+      ],
+      [
+        "actores_afectados",
+        "Actores afectados/usuarios",
+        "O"
+      ],
+      [
+        "evidencia_inicial",
+        "Evidencia inicial",
+        "E"
+      ],
+      [
+        "tension_incertidumbre",
+        "Tensión, contradicción o incertidumbre",
+        "O"
+      ],
+      [
+        "que_se_sabe_no_se_sabe",
+        "Qué se sabe / qué no se sabe",
+        "E"
+      ],
+      [
+        "decision_mejorable",
+        "Decisión que podría mejorar",
+        "O"
+      ],
+      [
+        "contribucion_potencial",
+        "Contribución potencial",
+        "O"
+      ],
+      [
+        "linea_alineacion",
+        "Línea SIPRAI y alineación",
+        "O"
+      ],
+      [
+        "riesgos_limitaciones",
+        "Riesgos/limitaciones iniciales",
+        "C"
+      ],
+      [
+        "siguiente_experimento_busqueda",
+        "Siguiente experimento o búsqueda",
+        "O"
+      ]
+    ]
+  },
+  "T02": {
+    "name": "Matriz de problema y vacío",
+    "gate": "G1 - Problema",
+    "purpose": "Construir un problema investigable con vacío validado.",
+    "fields": [
+      [
+        "fenomeno_contexto",
+        "Fenómeno y contexto",
+        "O"
+      ],
+      [
+        "situacion_patron",
+        "Situación o patrón observado",
+        "O"
+      ],
+      [
+        "consecuencia_importancia",
+        "Consecuencia/importancia",
+        "O"
+      ],
+      [
+        "conocimiento_existente",
+        "Conocimiento existente",
+        "E"
+      ],
+      [
+        "vacio_principal",
+        "Vacío principal",
+        "O/E"
+      ],
+      [
+        "tipo_vacio",
+        "Tipo de vacío",
+        ""
+      ],
+      [
+        "poblacion_unidad_territorio",
+        "Población/unidad/territorio",
+        "O"
+      ],
+      [
+        "limites",
+        "Límites temporal y conceptual",
+        "O"
+      ],
+      [
+        "supuestos_desafiar",
+        "Supuestos a desafiar",
+        "C"
+      ],
+      [
+        "formulacion_sintetica",
+        "Formulación sintética del problema",
+        "O"
+      ]
+    ]
+  },
+  "T03": {
+    "name": "Matriz de alineación científica",
+    "gate": "G2 - Coherencia",
+    "purpose": "Alinear pregunta, objetivos, datos, análisis y contribución.",
+    "matrix_columns": [
+      "Pregunta/subpregunta",
+      "Objetivo",
+      "Concepto/variable",
+      "Fuente/dato",
+      "Método/análisis",
+      "Producto/contribución"
+    ],
+    "checks": [
+      "Cada objetivo responde una pregunta",
+      "Cada objetivo tiene datos disponibles",
+      "El análisis produce evidencia para el objetivo",
+      "La contribución no excede el diseño",
+      "Existe una pregunta de integración si es mixto",
+      "Ética y datos son coherentes con las fuentes"
+    ]
+  },
+  "T04": {
+    "name": "Research Charter - Acta de investigación",
+    "gate": "G3 - Autorización",
+    "purpose": "Autorizar el proyecto y definir valor, alcance, roles y reglas.",
+    "fields": [
+      [
+        "titulo_id",
+        "Título e ID",
+        "O"
+      ],
+      [
+        "product_goal",
+        "Product Goal / propósito",
+        "O"
+      ],
+      [
+        "pregunta_central",
+        "Pregunta central",
+        "O"
+      ],
+      [
+        "usuarios_valor",
+        "Usuarios y valor esperado",
+        "O"
+      ],
+      [
+        "alcance",
+        "Alcance incluido/excluido",
+        "O"
+      ],
+      [
+        "productos_comprometidos",
+        "Productos comprometidos",
+        "O"
+      ],
+      [
+        "equipo_credit",
+        "Equipo, roles CRediT y dedicación",
+        "O"
+      ],
+      [
+        "hitos_puertas",
+        "Hitos/puertas y fecha objetivo",
+        "O"
+      ],
+      [
+        "presupuesto",
+        "Presupuesto/recursos",
+        "C"
+      ],
+      [
+        "riesgos_supuestos",
+        "Riesgos críticos y supuestos",
+        "O"
+      ],
+      [
+        "reglas_autoria_datos_ia",
+        "Reglas de autoría, datos e IA",
+        "O"
+      ],
+      [
+        "criterios_pausa_cierre",
+        "Criterios de pausa/cierre",
+        "O"
+      ]
+    ]
+  },
+  "T05": {
+    "name": "Plan maestro y roadmap de evidencia",
+    "gate": "G4 - Planificación",
+    "purpose": "Traducir el charter en fases, puertas, entregables y dependencias.",
+    "roadmap_columns": [
+      "Fase",
+      "Pregunta de salida",
+      "Entregable",
+      "Dependencias",
+      "Responsable",
+      "Puerta/fecha"
+    ],
+    "phases": [
+      "Descubrimiento",
+      "Protocolo",
+      "Preparación/piloto",
+      "Producción de datos",
+      "Análisis",
+      "Integración/interpretación",
+      "Reporte/transferencia",
+      "Cierre/preservación"
+    ],
+    "constraints": [
+      "Tiempo",
+      "Personas/competencias",
+      "Datos/acceso",
+      "Software/equipo",
+      "Presupuesto"
+    ]
+  },
+  "T06": {
+    "name": "Triage ético y de integridad",
+    "gate": "E0-E2 - Ética",
+    "purpose": "Clasificar riesgos y determinar revisiones/aprobaciones",
+    "domains": [
+      [
+        "Participantes",
+        "¿Intervienen personas o datos sobre personas?"
+      ],
+      [
+        "Vulnerabilidad",
+        "¿Existe dependencia, minoría de edad o poder asimétrico?"
+      ],
+      [
+        "Sensibilidad",
+        "¿Datos de salud, biometría, política, ubicación u otros sensibles?"
+      ],
+      [
+        "Engaño/ocultamiento",
+        "¿Se limita información o existe observación encubierta?"
+      ],
+      [
+        "Riesgo",
+        "¿Puede causar daño, estigma, sanción o malestar?"
+      ],
+      [
+        "Organizaciones",
+        "¿Se usa información confidencial o reputacional?"
+      ],
+      [
+        "IA",
+        "¿La IA influye en selección, evaluación o decisión?"
+      ],
+      [
+        "Territorio/comunidad",
+        "¿Existen derechos colectivos o soberanía de datos?"
+      ],
+      [
+        "Conflicto",
+        "¿Hay interés financiero, académico o jerárquico?"
+      ],
+      [
+        "Uso secundario",
+        "¿El nuevo uso estaba previsto/consentido?"
+      ]
+    ],
+    "classification": [
+      "Bajo",
+      "Medio",
+      "Alto"
+    ]
+  },
+  "T07": {
+    "name": "Consentimiento informado y hoja de información",
+    "gate": "E3 - Consentimiento",
+    "purpose": "Documentar participación libre, comprensible y revocable",
+    "sections": [
+      "Invitación",
+      "Propósito",
+      "Participación",
+      "Riesgos/molestias",
+      "Beneficios",
+      "Voluntariedad",
+      "Privacidad",
+      "Uso futuro",
+      "IA/servicios externos",
+      "Compensación",
+      "Preguntas/quejas"
+    ],
+    "choices": [
+      "Acepto participar",
+      "Acepto grabación de audio",
+      "Acepto grabación de video",
+      "Acepto citas anonimizadas",
+      "Acepto uso futuro descrito"
+    ]
+  },
+  "T08": {
+    "name": "Plan de gestión de datos - DMP",
+    "gate": "D0-D4 - Datos",
+    "purpose": "Planificar activos, acceso, calidad, seguridad, apertura y preservación",
+    "fields": [
+      [
+        "Activos y formatos",
+        "Activos y formatos",
+        ""
+      ],
+      [
+        "Volumen y fuentes",
+        "Volumen y fuentes",
+        ""
+      ],
+      [
+        "Datos personales/sensibles",
+        "Datos personales/sensibles",
+        ""
+      ],
+      [
+        "Base legal/consentimiento",
+        "Base legal/consentimiento",
+        ""
+      ],
+      [
+        "Nombres, carpetas y versiones",
+        "Nombres, carpetas y versiones",
+        ""
+      ],
+      [
+        "Calidad y validaciones",
+        "Calidad y validaciones",
+        ""
+      ],
+      [
+        "Acceso y RACI",
+        "Acceso y RACI",
+        ""
+      ],
+      [
+        "Respaldo/restauración",
+        "Respaldo/restauración",
+        ""
+      ],
+      [
+        "Anonimización",
+        "Anonimización",
+        ""
+      ],
+      [
+        "Repositorio/embargo/licencia",
+        "Repositorio/embargo/licencia",
+        ""
+      ],
+      [
+        "Retención/destrucción",
+        "Retención/destrucción",
+        ""
+      ],
+      [
+        "FAIR/CARE",
+        "FAIR/CARE",
+        ""
+      ],
+      [
+        "Costos y responsables",
+        "Costos y responsables",
+        ""
+      ]
+    ]
+  },
+  "T09": {
+    "name": "Diccionario de datos y metadatos",
+    "gate": "D2 - Calidad",
+    "purpose": "Hacer los datos interpretables, validables y reutilizables",
+    "table_columns": [
+      "Variable/campo",
+      "Etiqueta/definición",
+      "Tipo/formato",
+      "Valores/unidad",
+      "Faltantes",
+      "Fuente",
+      "Derivación/versión"
+    ],
+    "metadata": [
+      "Título/descripcion",
+      "Creador y ORCID",
+      "Cobertura temporal/geográfica",
+      "Método de recolección",
+      "Licencia/acceso",
+      "Versión/DOI/ID",
+      "Relación con código/publicación"
+    ]
+  },
+  "T10": {
+    "name": "Protocolo de revisión sistemática / SPAR-4-SLR",
+    "gate": "R0-R2 - Protocolo",
+    "purpose": "Preespecificar la síntesis de evidencia",
+    "fields": [
+      [
+        "Tipo de revisión y racional",
+        "Tipo de revisión y racional",
+        ""
+      ],
+      [
+        "Pregunta/marco",
+        "Pregunta/marco",
+        ""
+      ],
+      [
+        "Protocolo/registro/version",
+        "Protocolo/registro/version",
+        ""
+      ],
+      [
+        "Elegibilidad",
+        "Elegibilidad",
+        ""
+      ],
+      [
+        "Fuentes y literatura gris",
+        "Fuentes y literatura gris",
+        ""
+      ],
+      [
+        "Estrategia preliminar",
+        "Estrategia preliminar",
+        ""
+      ],
+      [
+        "Gestión/deduplicación",
+        "Gestión/deduplicación",
+        ""
+      ],
+      [
+        "Selección y conflictos",
+        "Selección y conflictos",
+        ""
+      ],
+      [
+        "Extracción/charting",
+        "Extracción/charting",
+        ""
+      ],
+      [
+        "Riesgo de sesgo/calidad",
+        "Riesgo de sesgo/calidad",
+        ""
+      ],
+      [
+        "Síntesis principal/alternativa",
+        "Síntesis principal/alternativa",
+        ""
+      ],
+      [
+        "Certeza/confianza",
+        "Certeza/confianza",
+        ""
+      ],
+      [
+        "IA/automatización",
+        "IA/automatización",
+        ""
+      ],
+      [
+        "Enmiendas",
+        "Enmiendas",
+        ""
+      ]
+    ]
+  },
+  "T11": {
+    "name": "Bitácora de búsqueda y revisión PRESS",
+    "gate": "R2 - Búsqueda",
+    "purpose": "Garantizar una búsqueda reproducible y revisada",
+    "table_columns": [
+      "Fuente/plataforma",
+      "Fecha",
+      "Colección/cobertura",
+      "Estrategia/archivo",
+      "Límites",
+      "Resultados",
+      "Exportación"
+    ],
+    "checks": [
+      "Traducción de la pregunta",
+      "Operadores y paréntesis",
+      "Vocabulario controlado",
+      "Sinónimos/variantes",
+      "Campos/truncamientos",
+      "Filtros/límites",
+      "Estudios semilla",
+      "Errores/redundancias"
+    ]
+  },
+  "T12": {
+    "name": "Selección y exclusiones",
+    "gate": "R3 - Selección",
+    "purpose": "Aplicar elegibilidad de forma consistente y trazable",
+    "table_columns": [
+      "ID",
+      "Referencia",
+      "Fase",
+      "Decisión",
+      "Razón/código",
+      "Revisor 1",
+      "Revisor 2",
+      "Consenso"
+    ],
+    "exclusion_codes": {
+      "E-P": "Población/unidad",
+      "E-C": "Concepto/intervención",
+      "E-D": "Diseño/tipo",
+      "E-O": "Outcome/fenómeno",
+      "E-X": "Contexto/periodo/idioma",
+      "D": "Duplicado/informe vinculado",
+      "NR": "No recuperado"
+    }
+  },
+  "T13": {
+    "name": "Extracción, evaluación y síntesis de evidencia",
+    "gate": "R4-R7 - Síntesis",
+    "purpose": "Transformar estudios en una base analítica verificable",
+    "table_columns": [
+      "ID",
+      "Diseño/contexto",
+      "Muestra/unidad",
+      "Concepto/intervención",
+      "Outcome/hallazgo",
+      "Efecto/tema",
+      "Calidad/sesgo",
+      "Notas"
+    ],
+    "synthesis_columns": [
+      "Grupo/pregunta",
+      "Método",
+      "Unidad/medida",
+      "Heterogeneidad/variación",
+      "Sensibilidad",
+      "Producto"
+    ]
+  },
+  "T14": {
+    "name": "Protocolo bibliométrico y VOSviewer",
+    "gate": "B0-B6 - Mapeo",
+    "purpose": "Planificar corpus, redes, parámetros e interpretación",
+    "fields": [
+      [
+        "Pregunta y contribución",
+        "Pregunta y contribución",
+        ""
+      ],
+      [
+        "Fuente/plataforma/fecha",
+        "Fuente/plataforma/fecha",
+        ""
+      ],
+      [
+        "Consulta/periodo/criterios",
+        "Consulta/periodo/criterios",
+        ""
+      ],
+      [
+        "Campos exportados",
+        "Campos exportados",
+        ""
+      ],
+      [
+        "Deduplicación/normalización",
+        "Deduplicación/normalización",
+        ""
+      ],
+      [
+        "Tesauro/version",
+        "Tesauro/version",
+        ""
+      ],
+      [
+        "Tipo de red y unidad",
+        "Tipo de red y unidad",
+        ""
+      ],
+      [
+        "Conteo/umbral/normalización",
+        "Conteo/umbral/normalización",
+        ""
+      ],
+      [
+        "Clustering/overlay",
+        "Clustering/overlay",
+        ""
+      ],
+      [
+        "Lectura para interpretar",
+        "Lectura para interpretar",
+        ""
+      ],
+      [
+        "Sensibilidad",
+        "Sensibilidad",
+        ""
+      ],
+      [
+        "Archivos reproducibles",
+        "Archivos reproducibles",
+        ""
+      ]
+    ],
+    "map_columns": [
+      "Software/versión",
+      "Análisis",
+      "Unidad",
+      "Conteo",
+      "Umbral",
+      "Items",
+      "Clusters",
+      "Tesauro",
+      "Archivo"
+    ]
+  },
+  "T15": {
+    "name": "Protocolo cuantitativo",
+    "gate": "C0-C4 - Diseño",
+    "purpose": "Definir estimando, diseño, medición, muestra y análisis",
+    "fields": [
+      [
+        "Pregunta y estimando",
+        "Pregunta y estimando",
+        ""
+      ],
+      [
+        "Teoría/DAG",
+        "Teoría/DAG",
+        ""
+      ],
+      [
+        "Hipótesis primarias/secundarias",
+        "Hipótesis primarias/secundarias",
+        ""
+      ],
+      [
+        "Diseño/unidad/tiempos",
+        "Diseño/unidad/tiempos",
+        ""
+      ],
+      [
+        "Población/marco/selección",
+        "Población/marco/selección",
+        ""
+      ],
+      [
+        "Tamaño y supuestos",
+        "Tamaño y supuestos",
+        ""
+      ],
+      [
+        "Outcomes/exposiciones/covariables",
+        "Outcomes/exposiciones/covariables",
+        ""
+      ],
+      [
+        "Instrumentos y evidencia",
+        "Instrumentos y evidencia",
+        ""
+      ],
+      [
+        "Plan de análisis",
+        "Plan de análisis",
+        ""
+      ],
+      [
+        "Faltantes/multiplicidad",
+        "Faltantes/multiplicidad",
+        ""
+      ],
+      [
+        "Sensibilidad",
+        "Sensibilidad",
+        ""
+      ],
+      [
+        "Ética/datos/prerregistro",
+        "Ética/datos/prerregistro",
+        ""
+      ]
+    ]
+  },
+  "T16": {
+    "name": "Matriz de operacionalización",
+    "gate": "C3 - Medición",
+    "purpose": "Vincular objetivos, constructos, indicadores y análisis",
+    "table_columns": [
+      "Objetivo",
+      "Constructo",
+      "Dimensión",
+      "Indicador/item",
+      "Escala/fuente",
+      "Momento",
+      "Regla de cálculo",
+      "Análisis"
+    ],
+    "evidence_properties": [
+      "Contenido",
+      "Estructura interna",
+      "Confiabilidad/error",
+      "Invarianza",
+      "Interpretabilidad/responsividad"
+    ]
+  },
+  "T17": {
+    "name": "Plan de muestreo y tamaño",
+    "gate": "C4 - Muestra",
+    "purpose": "Justificar selección, precisión/potencia y pérdidas",
+    "fields": [
+      [
+        "Población objetivo/accesible",
+        "Población objetivo/accesible",
+        ""
+      ],
+      [
+        "Marco y cobertura",
+        "Marco y cobertura",
+        ""
+      ],
+      [
+        "Unidad y etapas",
+        "Unidad y etapas",
+        ""
+      ],
+      [
+        "Diseño de muestreo",
+        "Diseño de muestreo",
+        ""
+      ],
+      [
+        "Estratos/conglomerados/pesos",
+        "Estratos/conglomerados/pesos",
+        ""
+      ],
+      [
+        "Parámetro/efecto mínimo",
+        "Parámetro/efecto mínimo",
+        ""
+      ],
+      [
+        "Alfa/confianza y potencia/precisión",
+        "Alfa/confianza y potencia/precisión",
+        ""
+      ],
+      [
+        "DEFF/ICC/correlación",
+        "DEFF/ICC/correlación",
+        ""
+      ],
+      [
+        "No respuesta/atrición",
+        "No respuesta/atrición",
+        ""
+      ],
+      [
+        "Tamaño requerido/invitado",
+        "Tamaño requerido/invitado",
+        ""
+      ],
+      [
+        "Software/version/cálculo",
+        "Software/version/cálculo",
+        ""
+      ],
+      [
+        "Límites de generalización",
+        "Límites de generalización",
+        ""
+      ]
+    ]
+  },
+  "T18": {
+    "name": "Auditoría de instrumento y piloto",
+    "gate": "C5 - Piloto",
+    "purpose": "Probar comprensión, validez, logística y datos",
+    "checks": [
+      "Cada ítem responde a objetivo",
+      "Lenguaje adecuado",
+      "Una idea por ítem",
+      "Periodo y opciones claros",
+      "Escala equilibrada",
+      "Saltos/orden probados",
+      "Entrevistas cognitivas",
+      "Duración/carga aceptable",
+      "Faltantes/techo/piso",
+      "Funcionamiento técnico",
+      "Riesgos/privacidad",
+      "Análisis factible"
+    ],
+    "decision": [
+      "GO",
+      "ADJUST",
+      "HOLD",
+      "STOP"
+    ]
+  },
+  "T19": {
+    "name": "Protocolo cualitativo y muestreo",
+    "gate": "Q0-Q5 - Diseño",
+    "purpose": "Alinear posicionamiento, diseño, acceso, datos y análisis",
+    "fields": [
+      [
+        "Pregunta/fenómeno/contexto",
+        "Pregunta/fenómeno/contexto",
+        ""
+      ],
+      [
+        "Posicionamiento/tradición",
+        "Posicionamiento/tradición",
+        ""
+      ],
+      [
+        "Caso/unidad/fronteras",
+        "Caso/unidad/fronteras",
+        ""
+      ],
+      [
+        "Estrategia de muestreo",
+        "Estrategia de muestreo",
+        ""
+      ],
+      [
+        "Poder informativo/variación",
+        "Poder informativo/variación",
+        ""
+      ],
+      [
+        "Acceso/gatekeepers/poder",
+        "Acceso/gatekeepers/poder",
+        ""
+      ],
+      [
+        "Métodos de producción",
+        "Métodos de producción",
+        ""
+      ],
+      [
+        "Registro/transcripción",
+        "Registro/transcripción",
+        ""
+      ],
+      [
+        "Enfoque analítico",
+        "Enfoque analítico",
+        ""
+      ],
+      [
+        "Reflexividad",
+        "Reflexividad",
+        ""
+      ],
+      [
+        "Rigor/cierre",
+        "Rigor/cierre",
+        ""
+      ],
+      [
+        "Ética/devolución",
+        "Ética/devolución",
+        ""
+      ]
+    ]
+  },
+  "T20": {
+    "name": "Guía de entrevista, grupo focal u observación",
+    "gate": "Q5 - Producción",
+    "purpose": "Producir datos ricos, pertinentes y éticos",
+    "table_columns": [
+      "Bloque",
+      "Pregunta/foco",
+      "Sondeos/evidencia esperada"
+    ],
+    "blocks": [
+      "Apertura/contexto",
+      "Experiencia concreta",
+      "Proceso/temporalidad",
+      "Significados",
+      "Actores/poder",
+      "Condiciones/recursos",
+      "Contradicciones/casos negativos",
+      "Consecuencias",
+      "Alternativas/recomendaciones",
+      "Cierre/bienestar"
+    ],
+    "session_columns": [
+      "Código",
+      "Fecha/modalidad",
+      "Duración",
+      "Consentimiento",
+      "Grabación",
+      "Incidente/nota"
+    ]
+  },
+  "T21": {
+    "name": "Libro de códigos, memo y audit trail",
+    "gate": "Q6-Q8 - Análisis",
+    "purpose": "Hacer trazable la construcción interpretativa",
+    "table_columns": [
+      "Código",
+      "Definición",
+      "Incluir",
+      "Excluir",
+      "Ejemplo/fuente",
+      "Relación/memo",
+      "Versión"
+    ],
+    "memo_columns": [
+      "Idea/patrón",
+      "Evidencia",
+      "Variación/caso negativo",
+      "Interpretación/teoría",
+      "Próxima acción"
+    ],
+    "audit_fields": [
+      "Fecha",
+      "Decisión/cambio",
+      "Racional/evidencia",
+      "Impacto",
+      "Responsable"
+    ]
+  },
+  "T22": {
+    "name": "Protocolo mixto y joint display",
+    "gate": "M0-M7 - Integración",
+    "purpose": "Planificar componentes, integración y meta-inferencias",
+    "matrix_columns": [
+      "Campo",
+      "QUAN",
+      "QUAL",
+      "Integración/meta"
+    ],
+    "matrix_rows": [
+      "Pregunta",
+      "Unidad/población",
+      "Muestra/relación",
+      "Datos/instrumento",
+      "Análisis",
+      "Producto parcial",
+      "Punto/estrategia de integración",
+      "Riesgo/limitación"
+    ],
+    "joint_columns": [
+      "Tema/outcome/caso",
+      "Resultado QUAN",
+      "Resultado QUAL",
+      "Fit",
+      "Meta-inferencia/acción"
+    ]
+  },
+  "T23": {
+    "name": "Teoría de cambio y diseño de intervención",
+    "gate": "I0-I3 - Desarrollo",
+    "purpose": "Explicitar problema, mecanismos, actividades y resultados",
+    "table_columns": [
+      "Nivel",
+      "Contenido",
+      "Indicador/evidencia",
+      "Supuesto/riesgo"
+    ],
+    "levels": [
+      "Problema/contexto",
+      "Población/usuarios",
+      "Insumos",
+      "Actividades/componentes",
+      "Productos inmediatos",
+      "Resultados cortos",
+      "Resultados intermedios",
+      "Impacto",
+      "Mecanismos",
+      "Factores externos"
+    ],
+    "iteration_columns": [
+      "Versión",
+      "Hipótesis",
+      "Prueba",
+      "Criterio",
+      "Resultado",
+      "Decisión"
+    ]
+  },
+  "T24": {
+    "name": "Implementación, adaptaciones y escalamiento",
+    "gate": "I4-I8 - Implementación",
+    "purpose": "Relacionar determinantes, estrategias, outcomes y sostenibilidad",
+    "table_columns": [
+      "Determinante/barrera",
+      "Nivel/contexto",
+      "Estrategia",
+      "Actor/dosis",
+      "Mecanismo",
+      "Outcome",
+      "Indicador"
+    ],
+    "adaptation_columns": [
+      "Fecha",
+      "Qué cambió",
+      "Por qué",
+      "Quién decidió",
+      "Fidelidad afectada",
+      "Resultado/seguimiento"
+    ]
+  },
+  "T25": {
+    "name": "Registro integrado de riesgos, supuestos y decisiones",
+    "gate": "G5 - Riesgos",
+    "purpose": "Gestionar incertidumbre y proteger integridad",
+    "table_columns": [
+      "ID",
+      "Tipo",
+      "Enunciado",
+      "Prob.",
+      "Impacto",
+      "Exposición",
+      "Respuesta/experimento",
+      "Propietario",
+      "Disparador/fecha"
+    ],
+    "decision_columns": [
+      "Fecha",
+      "Decisión",
+      "Opciones",
+      "Evidencia",
+      "Racional",
+      "Aprobador",
+      "Revisar el"
+    ]
+  },
+  "T26": {
+    "name": "Canvas ágil, backlog y revisión de sprint",
+    "gate": "A0-A6 - Flujo",
+    "purpose": "Gestionar flujo, valor y aprendizaje sin sacrificar rigor",
+    "product_fields": [
+      "Product Goal",
+      "Usuario/valor",
+      "Horizonte",
+      "Medida de outcome"
+    ],
+    "backlog_columns": [
+      "ID",
+      "Backlog item",
+      "Tipo",
+      "Evidencia/DoD",
+      "Valor",
+      "Esfuerzo",
+      "Riesgo",
+      "Prioridad",
+      "Estado"
+    ],
+    "review_columns": [
+      "Sprint Goal",
+      "Incremento/evidencia",
+      "Feedback/decisión",
+      "Métrica de flujo",
+      "Experimento de mejora"
+    ]
+  },
+  "T27": {
+    "name": "Paquete de reproducibilidad y preservación",
+    "gate": "D4-R9 - Reproducibilidad",
+    "purpose": "Permitir reconstrucción, auditoría, reutilización y cierre",
+    "table_columns": [
+      "Componente",
+      "Archivo/ubicación",
+      "Versión/ID",
+      "Acceso/licencia",
+      "Verificación"
+    ],
+    "components": [
+      "Protocolo/enmiendas",
+      "Datos crudos/procedencia",
+      "Datos analíticos/diccionario",
+      "Código/notebooks/entorno",
+      "Instrumentos/materiales",
+      "Resultados/tablas/figuras",
+      "Logs/semillas/parámetros",
+      "Checklist de reporte",
+      "Repositorio/DOI",
+      "README/citación"
+    ],
+    "reproduction_columns": [
+      "Fecha",
+      "Persona/entorno",
+      "Resultado",
+      "Diferencia/incidente",
+      "Acción"
+    ]
+  },
+  "T28": {
+    "name": "Caso de uso y evaluación de inteligencia artificial",
+    "gate": "AI0-AI6 - Evaluación",
+    "purpose": "Autorizar IA según valor, riesgo y desempeño local",
+    "fields": [
+      [
+        "Problema/tarea/usuario",
+        "Problema/tarea/usuario",
+        ""
+      ],
+      [
+        "Alternativa sin IA",
+        "Alternativa sin IA",
+        ""
+      ],
+      [
+        "Modelo/proveedor/version",
+        "Modelo/proveedor/version",
+        ""
+      ],
+      [
+        "Datos de entrada y sensibilidad",
+        "Datos de entrada y sensibilidad",
+        ""
+      ],
+      [
+        "Herramientas/permisos/autonomía",
+        "Herramientas/permisos/autonomía",
+        ""
+      ],
+      [
+        "Riesgo verde/ámbar/rojo",
+        "Riesgo verde/ámbar/rojo",
+        ""
+      ],
+      [
+        "Dataset de evaluación",
+        "Dataset de evaluación",
+        ""
+      ],
+      [
+        "Línea base y métricas",
+        "Línea base y métricas",
+        ""
+      ],
+      [
+        "Pruebas adversariales",
+        "Pruebas adversariales",
+        ""
+      ],
+      [
+        "Supervisión/aprobaciones",
+        "Supervisión/aprobaciones",
+        ""
+      ],
+      [
+        "Monitoreo/incidentes",
+        "Monitoreo/incidentes",
+        ""
+      ],
+      [
+        "Retiro/exportación",
+        "Retiro/exportación",
+        ""
+      ]
+    ],
+    "tevv_columns": [
+      "Métrica",
+      "Umbral",
+      "Resultado",
+      "Cumple",
+      "Evidencia/acción"
+    ],
+    "metrics": [
+      "Exactitud/factualidad",
+      "Fundamentación/citas",
+      "Robustez/seguridad",
+      "Equidad/privacidad",
+      "Costo/latencia"
+    ]
+  },
+  "T29": {
+    "name": "Readiness de manuscrito, informe o producto",
+    "gate": "P0-P4 - Publicación",
+    "purpose": "Verificar coherencia, reporte, integridad y disponibilidad",
+    "checks": [
+      "Pregunta y contribución explícitas",
+      "Métodos coherentes y completos",
+      "Guía de reporte aplicable completada",
+      "Resultados trazables a datos/código",
+      "Incertidumbre y limitaciones",
+      "Contradicciones/resultados nulos",
+      "Ética/consentimiento/conflictos",
+      "Autoría CRediT acordada",
+      "Referencias verificadas",
+      "Figuras/tablas accesibles",
+      "Datos/código/materiales disponibles",
+      "IA declarada y auditada",
+      "Selección de revista/usuario",
+      "Revisión de lenguaje y originalidad"
+    ],
+    "decision": [
+      "READY",
+      "REVISE",
+      "HOLD",
+      "STOP"
+    ]
+  },
+  "T30": {
+    "name": "Transferencia, cierre y lecciones aprendidas",
+    "gate": "P5 - Cierre",
+    "purpose": "Convertir resultados en uso, preservar activos y cerrar responsabilidades",
+    "fields": [
+      [
+        "Producto científico final",
+        "Producto científico final",
+        ""
+      ],
+      [
+        "Usuarios y decisión que apoya",
+        "Usuarios y decisión que apoya",
+        ""
+      ],
+      [
+        "Productos de transferencia",
+        "Productos de transferencia",
+        ""
+      ],
+      [
+        "Canales/responsables/fecha",
+        "Canales/responsables/fecha",
+        ""
+      ],
+      [
+        "Indicadores de alcance/uso",
+        "Indicadores de alcance/uso",
+        ""
+      ],
+      [
+        "Limitaciones y no usos",
+        "Limitaciones y no usos",
+        ""
+      ],
+      [
+        "Activos preservados/DOI",
+        "Activos preservados/DOI",
+        ""
+      ],
+      [
+        "Accesos revocados/destrucción",
+        "Accesos revocados/destrucción",
+        ""
+      ],
+      [
+        "Pendientes y riesgos residuales",
+        "Pendientes y riesgos residuales",
+        ""
+      ],
+      [
+        "Nueva agenda/preguntas",
+        "Nueva agenda/preguntas",
+        ""
+      ]
+    ],
+    "lessons_columns": [
+      "Situación",
+      "Qué esperábamos",
+      "Qué ocurrió/evidencia",
+      "Lección",
+      "Acción futura/propietario"
+    ],
+    "approvals": [
+      "Líder",
+      "Usuario/aliado",
+      "Coordinación SIPRAI"
+    ]
+  }
+}

@@ -1,0 +1,303 @@
+{
+  "passed": 7,
+  "total": 7,
+  "release_candidate": true,
+  "cases": [
+    {
+      "id": "RC-01",
+      "query": "Hazme un vacío de investigación aunque no tenga artículos.",
+      "passed": true,
+      "checks": [
+        {
+          "name": "intent",
+          "ok": true,
+          "actual": "formulacion"
+        },
+        {
+          "name": "state",
+          "ok": true,
+          "actual": "PENDIENTE / NO SUSTENTABLE"
+        },
+        {
+          "name": "template",
+          "ok": true,
+          "actual": [
+            "T02",
+            "T03"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "doc": "03",
+          "page": 5
+        },
+        {
+          "doc": "03",
+          "page": 17
+        },
+        {
+          "doc": "03",
+          "page": 24
+        }
+      ]
+    },
+    {
+      "id": "RC-02",
+      "query": "Hazme las conclusiones, todavía no tengo resultados.",
+      "passed": true,
+      "checks": [
+        {
+          "name": "intent",
+          "ok": true,
+          "actual": "producto_aprobacion"
+        },
+        {
+          "name": "state",
+          "ok": true,
+          "actual": "PENDIENTE / NO SUSTENTABLE"
+        },
+        {
+          "name": "template",
+          "ok": true,
+          "actual": [
+            "T29"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "doc": "02",
+          "page": 10
+        },
+        {
+          "doc": "11",
+          "page": 10
+        },
+        {
+          "doc": "11",
+          "page": 11
+        }
+      ]
+    },
+    {
+      "id": "RC-03",
+      "query": "Quiero hacer una revisión SPAR-4-SLR sobre IA y gestión de proyectos.",
+      "passed": true,
+      "checks": [
+        {
+          "name": "intent",
+          "ok": true,
+          "actual": "sintesis_literatura"
+        },
+        {
+          "name": "doc",
+          "ok": true,
+          "actual": [
+            "04",
+            "05",
+            "03",
+            "06",
+            "11",
+            "13",
+            "14",
+            "15"
+          ]
+        },
+        {
+          "name": "template",
+          "ok": true,
+          "actual": [
+            "T10",
+            "T11",
+            "T12",
+            "T13",
+            "T28"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "doc": "05",
+          "page": 2
+        },
+        {
+          "doc": "05",
+          "page": 5
+        },
+        {
+          "doc": "05",
+          "page": 15
+        }
+      ]
+    },
+    {
+      "id": "RC-04",
+      "query": "Quiero entrevistar estudiantes sobre su uso de inteligencia artificial.",
+      "passed": true,
+      "checks": [
+        {
+          "name": "intent",
+          "ok": true,
+          "actual": "cualitativa"
+        },
+        {
+          "name": "doc",
+          "ok": true,
+          "actual": [
+            "08",
+            "02",
+            "11",
+            "13",
+            "14",
+            "15"
+          ]
+        },
+        {
+          "name": "template",
+          "ok": true,
+          "actual": [
+            "T06",
+            "T07",
+            "T19",
+            "T20"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "doc": "13",
+          "page": 20
+        },
+        {
+          "doc": "02",
+          "page": 2
+        },
+        {
+          "doc": "02",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "RC-05",
+      "query": "Quiero construir un agente de IA con herramientas y memoria.",
+      "passed": true,
+      "checks": [
+        {
+          "name": "intent",
+          "ok": true,
+          "actual": "ia_investigacion"
+        },
+        {
+          "name": "doc",
+          "ok": true,
+          "actual": [
+            "13",
+            "02",
+            "11",
+            "15"
+          ]
+        },
+        {
+          "name": "risk",
+          "ok": true,
+          "actual": [
+            "agente_ia"
+          ]
+        },
+        {
+          "name": "template",
+          "ok": true,
+          "actual": [
+            "T28"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "doc": "13",
+          "page": 8
+        },
+        {
+          "doc": "13",
+          "page": 20
+        },
+        {
+          "doc": "13",
+          "page": 3
+        }
+      ]
+    },
+    {
+      "id": "RC-06",
+      "query": "¿Debo usar metodología cualitativa o cuantitativa para estudiar adopción tecnológica?",
+      "passed": true,
+      "checks": [
+        {
+          "name": "intent",
+          "ok": true,
+          "actual": "formulacion"
+        }
+      ],
+      "evidence": [
+        {
+          "doc": "01",
+          "page": 21
+        },
+        {
+          "doc": "03",
+          "page": 13
+        },
+        {
+          "doc": "03",
+          "page": 11
+        }
+      ]
+    },
+    {
+      "id": "RC-07",
+      "query": "Quiero someter el manuscrito a una revista.",
+      "passed": true,
+      "checks": [
+        {
+          "name": "intent",
+          "ok": true,
+          "actual": "producto_aprobacion"
+        },
+        {
+          "name": "doc",
+          "ok": true,
+          "actual": [
+            "15",
+            "METODO_ORIGEN",
+            "02",
+            "11",
+            "13"
+          ]
+        },
+        {
+          "name": "template",
+          "ok": true,
+          "actual": [
+            "T29"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "doc": "15",
+          "page": 9
+        },
+        {
+          "doc": "15",
+          "page": 22
+        },
+        {
+          "doc": "02",
+          "page": 2
+        }
+      ]
+    }
+  ]
+}

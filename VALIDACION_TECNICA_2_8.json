@@ -1,0 +1,41 @@
+{
+  "syntax_errors": [],
+  "web_acceptance": {
+    "passed": 8,
+    "total": 8,
+    "checks": [
+      [
+        "prof_login",
+        true
+      ],
+      [
+        "student_login",
+        true
+      ],
+      [
+        "acl_member",
+        true
+      ],
+      [
+        "acl_denied",
+        true
+      ],
+      [
+        "security_headers",
+        true
+      ],
+      [
+        "anti_fabrication",
+        true
+      ],
+      [
+        "backup_exists",
+        true
+      ],
+      [
+        "persistent_dir",
+        true
+      ]
+    ]
+  }
+}

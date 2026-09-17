@@ -1,0 +1,17 @@
+{
+  "name": "SIPRAI",
+  "version": "2.9-go-live-pilot",
+  "documents": 16,
+  "templates": 30,
+  "tests": "10/10",
+  "admin_features": [
+    "create projects",
+    "create users",
+    "assign/revoke",
+    "reset password",
+    "deactivate",
+    "backup download",
+    "system status"
+  ],
+  "deployment_ready": true
+}

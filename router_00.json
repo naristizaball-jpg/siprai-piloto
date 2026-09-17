@@ -1,0 +1,356 @@
+{
+  "version": "2.1",
+  "source": "Documento Maestro 00",
+  "intent_routes": [
+    {
+      "intent": "identidad_linea_roles_agenda",
+      "primary": [
+        "01"
+      ],
+      "complements": [
+        "12",
+        "15"
+      ],
+      "signals": [
+        "identidad",
+        "línea",
+        "linea",
+        "roles",
+        "agenda",
+        "semillero"
+      ]
+    },
+    {
+      "intent": "etica_autoria_participantes_conflicto",
+      "primary": [
+        "02"
+      ],
+      "complements": [
+        "11",
+        "13",
+        "15"
+      ],
+      "signals": [
+        "ética",
+        "etica",
+        "autoría",
+        "autoria",
+        "participantes",
+        "conflicto",
+        "consentimiento"
+      ]
+    },
+    {
+      "intent": "formulacion",
+      "primary": [
+        "03"
+      ],
+      "complements": [
+        "01",
+        "02",
+        "14"
+      ],
+      "signals": [
+        "problema",
+        "pregunta",
+        "objetivo",
+        "contribución",
+        "contribucion",
+        "formular"
+      ]
+    },
+    {
+      "intent": "sintesis_literatura",
+      "primary": [
+        "04",
+        "05"
+      ],
+      "complements": [
+        "03",
+        "06",
+        "11",
+        "13",
+        "14",
+        "15"
+      ],
+      "signals": [
+        "revisión",
+        "revision",
+        "prisma",
+        "spar",
+        "literatura",
+        "síntesis",
+        "sintesis"
+      ]
+    },
+    {
+      "intent": "bibliometria",
+      "primary": [
+        "06"
+      ],
+      "complements": [
+        "04",
+        "05",
+        "11",
+        "15"
+      ],
+      "signals": [
+        "bibliometría",
+        "bibliometria",
+        "vosviewer",
+        "redes",
+        "co-citación",
+        "cocitacion"
+      ]
+    },
+    {
+      "intent": "cuantitativa",
+      "primary": [
+        "07"
+      ],
+      "complements": [
+        "02",
+        "11",
+        "13",
+        "14"
+      ],
+      "signals": [
+        "encuesta",
+        "regresión",
+        "regresion",
+        "experimento",
+        "cuantitativo",
+        "muestra",
+        "variable"
+      ]
+    },
+    {
+      "intent": "cualitativa",
+      "primary": [
+        "08"
+      ],
+      "complements": [
+        "02",
+        "11",
+        "13",
+        "14"
+      ],
+      "signals": [
+        "entrevista",
+        "etnografía",
+        "etnografia",
+        "caso",
+        "cualitativo",
+        "temas",
+        "experiencia",
+        "significado",
+        "entrevistar",
+        "entrevistas",
+        "entrevist"
+      ]
+    },
+    {
+      "intent": "mixta",
+      "primary": [
+        "09"
+      ],
+      "complements": [
+        "07",
+        "08",
+        "02",
+        "11",
+        "14"
+      ],
+      "signals": [
+        "mixto",
+        "mixta",
+        "quan",
+        "qual",
+        "joint display",
+        "integración",
+        "integracion"
+      ]
+    },
+    {
+      "intent": "intervencion_diseno",
+      "primary": [
+        "10"
+      ],
+      "complements": [
+        "07",
+        "08",
+        "09",
+        "02",
+        "11",
+        "13",
+        "14"
+      ],
+      "signals": [
+        "intervención",
+        "intervencion",
+        "prototipo",
+        "artefacto",
+        "implementación",
+        "implementacion",
+        "diseño",
+        "diseno"
+      ]
+    },
+    {
+      "intent": "datos_codigo_preservacion",
+      "primary": [
+        "11"
+      ],
+      "complements": [
+        "02",
+        "13",
+        "15"
+      ],
+      "signals": [
+        "datos",
+        "código",
+        "codigo",
+        "fair",
+        "care",
+        "repositorio",
+        "preservación",
+        "preservacion"
+      ]
+    },
+    {
+      "intent": "agilidad_flujo",
+      "primary": [
+        "12"
+      ],
+      "complements": [
+        "01",
+        "14",
+        "15"
+      ],
+      "signals": [
+        "scrum",
+        "kanban",
+        "sprint",
+        "backlog",
+        "wip",
+        "retrospectiva",
+        "flujo",
+        "portafolio"
+      ]
+    },
+    {
+      "intent": "ia_investigacion",
+      "primary": [
+        "13"
+      ],
+      "complements": [
+        "02",
+        "11",
+        "15"
+      ],
+      "signals": [
+        "ia",
+        "gpt",
+        "agente",
+        "rag",
+        "prompt",
+        "copiloto",
+        "automatizar",
+        "modelo"
+      ]
+    },
+    {
+      "intent": "plantilla_formato",
+      "primary": [
+        "14"
+      ],
+      "complements": [
+        "SUSTANTIVO"
+      ],
+      "signals": [
+        "plantilla",
+        "formato",
+        "checklist",
+        "matriz",
+        "acta",
+        "protocolo"
+      ]
+    },
+    {
+      "intent": "producto_aprobacion",
+      "primary": [
+        "15"
+      ],
+      "complements": [
+        "METODO_ORIGEN",
+        "02",
+        "11",
+        "13"
+      ],
+      "signals": [
+        "aprobar",
+        "publicar",
+        "producto",
+        "manuscrito",
+        "dataset",
+        "software",
+        "minciencias",
+        "readiness"
+      ]
+    }
+  ],
+  "high_risk": [
+    {
+      "situation": "estudiantes_subordinados_comunidades",
+      "docs": [
+        "02",
+        "METODO",
+        "11",
+        "15"
+      ]
+    },
+    {
+      "situation": "datos_personales_sensibles_reidentificables",
+      "docs": [
+        "02",
+        "11",
+        "METODO"
+      ]
+    },
+    {
+      "situation": "agente_ia_herramientas_memoria",
+      "docs": [
+        "13",
+        "02",
+        "11",
+        "15"
+      ]
+    },
+    {
+      "situation": "intervencion_dano_inequidad",
+      "docs": [
+        "10",
+        "02",
+        "METODO_EVALUACION",
+        "15"
+      ]
+    },
+    {
+      "situation": "publicacion_dataset_codigo",
+      "docs": [
+        "11",
+        "02",
+        "15"
+      ]
+    },
+    {
+      "situation": "ia_seleccion_codificacion_exclusion_evidencia",
+      "docs": [
+        "13",
+        "04/05/06",
+        "02",
+        "11"
+      ]
+    }
+  ]
+}

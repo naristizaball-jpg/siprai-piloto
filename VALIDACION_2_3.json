@@ -1,0 +1,34 @@
+{
+  "syntax_errors": [],
+  "route_test": {
+    "intent": "ia_investigacion",
+    "documents": [
+      "13",
+      "02",
+      "11",
+      "15"
+    ],
+    "risks": [
+      "personas",
+      "agente_ia"
+    ]
+  },
+  "search_test": [
+    {
+      "doc": "03",
+      "page": 24,
+      "score": 9.382
+    },
+    {
+      "doc": "03",
+      "page": 18,
+      "score": 8.871
+    },
+    {
+      "doc": "03",
+      "page": 15,
+      "score": 8.682
+    }
+  ],
+  "quality_test_decision": "HOLD"
+}
