@@ -185,6 +185,3 @@ def route_message(message: str):
         "risks": risks,
     }
 
-Después presione Ctrl + S .
-
-Esta vez no modifiquero
