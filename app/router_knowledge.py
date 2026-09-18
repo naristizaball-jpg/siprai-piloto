@@ -89,23 +89,39 @@ def route_message(message:str):
                 if r["intent"] == "descubrimiento"
             )
         )
-docs=[]
-    
-for d in selected["primary"]+selected.get("complements",[]):
-        if d not in docs: docs.append(d)
+ docs = []
 
-    risks=[]
-    if any(x in t for x in ["estudiante","subordinado","comunidad","participante"]):
+    for d in selected["primary"] + selected.get("complements", []):
+        if d not in docs:
+            docs.append(d)
+
+    risks = []
+
+    if any(x in t for x in ["estudiante", "subordinado", "comunidad", "participante"]):
         risks.append("personas")
-        for d in ["02","11","15"]:
-            if d not in docs: docs.append(d)
-    if any(x in t for x in ["dato personal","datos personales","sensible","reidentific"]):
+        for d in ["02", "11", "15"]:
+            if d not in docs:
+                docs.append(d)
+
+    if any(x in t for x in ["dato personal", "datos personales", "sensible", "reidentific"]):
         risks.append("datos_sensibles")
-        for d in ["02","11"]:
-            if d not in docs: docs.append(d)
-    has_ai=any(re.search(r'(?<!\w)'+x+r'(?!\w)',t) for x in ["ia","gpt","rag","agente"])
-    if has_ai and any(x in t for x in ["herramienta","memoria","correo","autonomia"]):
+        for d in ["02", "11"]:
+            if d not in docs:
+                docs.append(d)
+
+    has_ai = any(
+        re.search(r'(?<!\w)' + x + r'(?!\w)', t)
+        for x in ["ia", "gpt", "rag", "agente"]
+    )
+
+    if has_ai and any(x in t for x in ["herramienta", "memoria", "correo", "autonomia"]):
         risks.append("agente_ia")
-        for d in ["13","02","11","15"]:
-            if d not in docs: docs.append(d)
-    return {"intent":selected["intent"],"documents":docs,"risks":risks}
+        for d in ["13", "02", "11", "15"]:
+            if d not in docs:
+                docs.append(d)
+
+    return {
+        "intent": selected["intent"],
+        "documents": docs,
+        "risks": risks
+    }
