@@ -40,25 +40,64 @@
         "consentimiento"
       ]
     },
-    {
-      "intent": "formulacion",
-      "primary": [
-        "03"
-      ],
-      "complements": [
-        "01",
-        "02",
-        "14"
-      ],
-      "signals": [
-        "problema",
-        "pregunta",
-        "objetivo",
-        "contribución",
-        "contribucion",
-        "formular"
-      ]
-    },
+    
+{
+  "intent": "descubrimiento",
+  "primary": [
+    "04"
+  ],
+  "complements": [
+    "00",
+    "01",
+    "03",
+    "14"
+  ],
+  "signals": [
+    "descubrimiento",
+    "estoy empezando",
+    "quiero comenzar",
+    "por dónde empiezo",
+    "por donde empiezo",
+    "primer paso",
+    "idea de investigación",
+    "idea de investigacion",
+    "tema de investigación",
+    "tema de investigacion",
+    "qué investigar",
+    "que investigar",
+    "vacío científico",
+    "vacio cientifico",
+    "no tengo problema",
+    "no tengo pregunta",
+    "no tengo objetivos",
+    "no he revisado literatura",
+    "buscar literatura",
+    "búsqueda científica",
+    "busqueda cientifica"
+  ]
+},
+{
+  "intent": "formulacion",
+  "primary": [
+    "03"
+  ],
+  "complements": [
+    "01",
+    "02",
+    "14"
+  ],
+  "signals": [
+    "problema",
+    "pregunta",
+    "objetivo",
+    "contribución",
+    "contribucion",
+    "formular"
+  ]
+},
+
+
+
     {
       "intent": "sintesis_literatura",
       "primary": [

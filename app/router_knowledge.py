@@ -18,20 +18,80 @@ def _hit(text, signal):
 
 def route_message(message:str):
     t=_norm(message)
-    # Explicit product/readiness cases
-    if any(x in t for x in ["conclusion","conclusiones","manuscrito","someter","publicar","readiness","producto final"]):
-        selected=next(r for r in ROUTER["intent_routes"] if r["intent"]=="producto_aprobacion")
-    else:
-        matches=[]
-        for r in ROUTER["intent_routes"]:
-            score=sum(1 for s in r["signals"] if _hit(message,s))
-            if score:
-                matches.append((score,r))
-        matches.sort(key=lambda x:x[0],reverse=True)
-        selected=matches[0][1] if matches else next(r for r in ROUTER["intent_routes"] if r["intent"]=="formulacion")
 
-    docs=[]
-    for d in selected["primary"]+selected.get("complements",[]):
+# 1. Prioridad pedagógica: descubrimiento antes de formulación
+    discovery_signals = [
+        "descubrimiento",
+        "estoy empezando",
+        "quiero comenzar",
+        "por donde empiezo",
+        "primer paso",
+        "idea de investigacion",
+        "tema de investigacion",
+        "que investigar",
+        "vacio cientifico",
+        "no tengo problema",
+        "no tengo pregunta",
+        "no tengo objetivo",
+        "no tengo objetivos",
+        "no he revisado literatura",
+        "buscar literatura",
+        "busqueda cientifica",
+        "sin evidencia de literatura",
+        "antes de formular",
+        "no quiero formular"
+    ]
+
+    if any(x in t for x in discovery_signals):
+        selected = next(
+            r for r in ROUTER["intent_routes"]
+            if r["intent"] == "descubrimiento"
+        )
+
+    # 2. Producto final / publicación
+    elif any(x in t for x in [
+        "conclusion",
+        "conclusiones",
+        "manuscrito",
+        "someter",
+        "publicar",
+        "readiness",
+        "producto final"
+    ]):
+        selected = next(
+            r for r in ROUTER["intent_routes"]
+            if r["intent"] == "producto_aprobacion"
+        )
+
+    # 3. Enrutamiento normal por señales
+    else:
+        matches = []
+
+        for r in ROUTER["intent_routes"]:
+            score = sum(
+                1 for s in r["signals"]
+                if _hit(message, s)
+            )
+
+            if score:
+                matches.append((score, r))
+
+        matches.sort(
+            key=lambda x: x[0],
+            reverse=True
+        )
+
+        selected = (
+            matches[0][1]
+            if matches
+            else next(
+                r for r in ROUTER["intent_routes"]
+                if r["intent"] == "descubrimiento"
+            )
+        )
+docs=[]
+    
+for d in selected["primary"]+selected.get("complements",[]):
         if d not in docs: docs.append(d)
 
     risks=[]
