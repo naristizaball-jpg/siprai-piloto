@@ -214,3 +214,21 @@ def project_members(project_id):
                         FROM project_acl JOIN users ON users.id=project_acl.user_id
                         WHERE project_id=? ORDER BY users.role,users.name""",(project_id,)).fetchall()
     con.close(); return [dict(r) for r in rows]
+
+def get_upload(project_id,upload_id):
+    con=connect()
+    try:
+        row=con.execute("SELECT * FROM uploads WHERE project_id=? AND id=?",
+                        (project_id,upload_id)).fetchone()
+    finally:
+        con.close()
+    if not row:
+        return None
+    record=dict(row)
+    folder=(UPLOADS/safe_project_id(project_id)).resolve()
+    root=UPLOADS.resolve()
+    path=(folder/record["stored_name"]).resolve()
+    # Require a file inside the uploads directory and its project folder.
+    if folder==root or root not in folder.parents or path.parent!=folder or not path.is_file():
+        return None
+    return record,path

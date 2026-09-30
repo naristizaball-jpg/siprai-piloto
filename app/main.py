@@ -1,6 +1,6 @@
 
 from fastapi import FastAPI, Request, HTTPException, UploadFile, File
-from fastapi.responses import HTMLResponse, Response
+from fastapi.responses import HTMLResponse, Response, FileResponse
 from starlette.middleware.sessions import SessionMiddleware
 from pathlib import Path
 import json, os, secrets
@@ -10,7 +10,7 @@ from .knowledge_search import search as knowledge_search
 from .quality_engine import evaluate_T29, product_gate_status
 from .professor_engine import answer as professor_answer, get_trace, init_trace_db
 from .project_store import init as init_projects, upsert_project, get_project, add_decision, decisions as project_decisions, save_template
-from .pilot_store import init as init_pilot, authenticate, get_user, list_users, create_user, grant_project, revoke_project, project_members, can_access, projects_for_user, audit, store_upload, list_uploads, audit_log, ensure_user, set_password, set_active, update_own_password
+from .pilot_store import init as init_pilot, authenticate, get_user, list_users, create_user, grant_project, revoke_project, project_members, can_access, projects_for_user, audit, store_upload, list_uploads, get_upload, audit_log, ensure_user, set_password, set_active, update_own_password
 from .export_service import project_export_bytes, backup_databases, list_backups, backup_path
 from .security import csrf_token, require_csrf, rate_limit, SECURITY_HEADERS
 from .paths import DATA_DIR
@@ -139,6 +139,19 @@ async def upload(project_id:str,request:Request,file:UploadFile=File(...)):
     try: rec=store_upload(project_id,u["id"],file.filename,data,file.content_type)
     except ValueError as e: raise HTTPException(400,str(e))
     audit(u["id"],"FILE_UPLOAD",project_id,file.filename); return {"ok":True,"file":rec}
+
+@app.get("/api/project/{project_id}/uploads/{upload_id}/download")
+def download_upload(project_id:str,upload_id:int,request:Request):
+    u=require_project(request,project_id)
+    result=get_upload(project_id,upload_id)
+    if result is None:
+        raise HTTPException(404,"Archivo no encontrado")
+    record,path=result
+    filename=record["original_name"].replace("\\","/").split("/")[-1]
+    filename="".join(c for c in filename if ord(c)>=32 and ord(c)!=127) or "archivo"
+    audit(u["id"],"FILE_DOWNLOAD",project_id,str(upload_id))
+    return FileResponse(path,media_type="application/octet-stream",filename=filename,
+                        headers={"Cache-Control":"private, no-store"})
 
 @app.get("/api/project/{project_id}/export")
 def export(project_id:str,request:Request):
