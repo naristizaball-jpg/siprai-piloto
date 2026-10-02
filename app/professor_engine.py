@@ -111,6 +111,43 @@ def build_answer(message, route, evidence, templates):
     parts.append("**Próxima acción:** " + next_action)
     return "\n\n".join(parts), state, next_action
 
+def evidence_followup(messages):
+    """Recognize explicit mentions, not semantic adequacy or verified facts."""
+    import unicodedata
+    fields=(
+        ('fuentes', r'trabajos? de clase|entrevist|encuest|documentos?|observacion|bases? de datos',
+         '¿Qué fuente concreta consultarás para responder tu pregunta?'),
+        ('datos por registrar', r'registr|anot|comparaciones? de cifras|revision(?:es)? de calculos',
+         '¿Qué datos concretos registrarás de esas fuentes?'),
+        ('acceso o consentimiento', r'autoriz|consentimiento|permiso',
+         '¿Cómo solicitarás autorización o consentimiento para acceder a la información?'),
+        ('protección de identidad', r'identidad|anonim|seudonim|confidencial|nombres',
+         '¿Cómo protegerás la identidad de los participantes en tus registros?'),
+        ('instrumento de registro', r'matriz|ficha|guion|guia de entrevista|formulario|tabla de registro',
+         '¿Qué instrumento usarás para registrar la información: una matriz de revisión, un guion de entrevista u otro?'),
+    )
+    status={}
+    for message in messages:
+        t=''.join(c for c in unicodedata.normalize('NFD',message.lower()) if unicodedata.category(c)!='Mn')
+        for clause in re.split(r'[.;\n]+',t):
+            for label,pattern,_ in fields:
+                if re.search(pattern,clause):
+                    # Explicit absence/correction supersedes earlier mentions.
+                    negative=bool(re.search(r'\b(no|sin|nunca|todavia no|aun no)\b',clause))
+                    status[label]=not negative
+    mentioned=[label for label,_,_ in fields if status.get(label)]
+    missing=[(label,q) for label,_,q in fields if not status.get(label)]
+    recognized=('Aspectos mencionados en tus mensajes: '+', '.join(mentioned)+'.' if mentioned
+                else 'Todavía no identifiqué una propuesta concreta de fuentes o registro.')
+    if missing:
+        label,q=missing[0]
+        return (recognized+'\n\nPor precisar: '+label+'.\n'+q,
+                'Precisar '+label+' para revisión docente.')
+    return (recognized+'\n\nYa mencionaste los cinco aspectos de esta guía. '
+            'Reúne tu pregunta y el plan de evidencia en un borrador para revisión docente. '
+            'No equivale a aprobar su pertinencia, su suficiencia ni la autorización para recoger datos.',
+            'Revisar con el docente la pregunta y el plan de evidencia.')
+
 def local_delimitation(project_id, message):
     """Guided local dialogue; student statements are not verified evidence."""
     import unicodedata
@@ -127,7 +164,7 @@ def local_delimitation(project_id, message):
         return questions, waiting, 'Responder con 1, 2 y 3 en líneas separadas.'
     if 'salir de delimitacion' in low:
         return ('Has salido de la delimitación. Puedes escribir una nueva consulta.', 'EN CONSTRUCCIÓN', 'Escribir una nueva consulta.')
-    history=get_trace(project_id,3)
+    history=get_trace(project_id,50)
     draft='DELIMITACIÓN: BORRADOR'
     review='DELIMITACIÓN: REVISIÓN DE PREGUNTA'
     context=None
@@ -142,14 +179,22 @@ def local_delimitation(project_id, message):
         if context['decision_state']==review:
             summary=context['answer'].split('Contexto propuesto por ti:\n')[1].split('\n\n')[0]
             if not is_question:
+                previous=[]
+                for row in history:
+                    if row['decision_state']!=review:
+                        break
+                    # Stop at the latest proposed/reformulated research question.
+                    if row['answer'].startswith('Pregunta propuesta para revisión:'):
+                        break
+                    previous.append(row['message'])
+                guidance,next_action=evidence_followup(list(reversed(previous))+[message])
                 return ('Evidencia o aclaración propuesta por ti:\n'+message.strip()+
                         '\n\nContexto propuesto por ti:\n'+summary+
-                        '\n\nAntes de recoger información, relaciona cada evidencia con lo que quieres comprender. '
-                        'Define su fuente, cómo la registrarás, el acceso autorizado y cómo protegerás la identidad de los participantes. '
-                        'Lo escrito aquí sigue siendo una propuesta; no confirma que la evidencia exista ni que sea suficiente.\n\n'
-                        '¿Qué fuente usarás y qué registrarás en ella? Para reformular, escribe la pregunta completa. '
-                        'Para cambiar de tema, escribe «salir de delimitación».',
-                        review,'Definir fuente y registro de evidencia para revisión docente.')
+                        '\n\n'+guidance+
+                        '\n\nEl reconocimiento local se basa en menciones explícitas; confirma si refleja lo que propusiste. '
+                        'Todo sigue siendo una propuesta, sin evidencia verificada. '
+                        'Para reformular, escribe la pregunta completa. Para cambiar de tema, escribe «salir de delimitación».',
+                        review,next_action)
         if not is_question:
             return ('Seguimos revisando tu pregunta de investigación. Escribe la pregunta completa para contrastarla con esta delimitación:\n\n'
                     'Delimitación preliminar según tus respuestas:\n\n'+summary,
