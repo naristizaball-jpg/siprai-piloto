@@ -1,11 +1,12 @@
 
 import json, sqlite3, zipfile, io
+from contextlib import closing
 from pathlib import Path
 from .project_store import get_project, decisions
 from .professor_engine import get_trace
 from .pilot_store import list_uploads
 
-from .paths import DATA_DIR, BACKUPS_DIR
+from .paths import DATA_DIR, BACKUPS_DIR, UPLOADS_DIR
 BASE=Path(__file__).resolve().parent.parent
 
 def project_export(project_id):
@@ -21,13 +22,28 @@ def project_export_bytes(project_id):
 
 def backup_databases():
     bdir=BACKUPS_DIR; bdir.mkdir(parents=True,exist_ok=True)
-    import datetime, shutil
-    stamp=datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    import datetime, tempfile, os
+    stamp=datetime.datetime.now().strftime("%Y%m%d_%H%M%S_%f")
     out=bdir/f"siprai_backup_{stamp}.zip"
-    with zipfile.ZipFile(out,"w",zipfile.ZIP_DEFLATED) as z:
-        for n in ["siprai_project.db","siprai_trace.db","siprai_pilot.db"]:
-            p=DATA_DIR/n
-            if p.exists():z.write(p,n)
+    # SQLite backup includes committed data still present in the WAL file.
+    # Publish the ZIP only after every database and attachment is copied.
+    with tempfile.TemporaryDirectory(dir=bdir) as tmp:
+        temp=Path(tmp)
+        archive=temp/"backup.zip"
+        with zipfile.ZipFile(archive,"w",zipfile.ZIP_DEFLATED) as z:
+            for n in ["siprai_project.db","siprai_trace.db","siprai_pilot.db"]:
+                p=DATA_DIR/n
+                with closing(sqlite3.connect(p.resolve().as_uri()+"?mode=ro",uri=True)) as source:
+                    with closing(sqlite3.connect(temp/n)) as target:
+                        source.backup(target)
+                z.write(temp/n,n)
+            if UPLOADS_DIR.exists():
+                for p in sorted(UPLOADS_DIR.rglob("*")):
+                    if p.is_symlink():
+                        raise ValueError("No se pueden respaldar adjuntos con enlaces simbólicos")
+                    if p.is_file():
+                        z.write(p,"uploads/"+p.relative_to(UPLOADS_DIR).as_posix())
+        os.replace(archive,out)
     return out
 
 
