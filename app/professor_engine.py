@@ -99,7 +99,7 @@ def build_answer(message, route, evidence, templates):
     elif "revista" in low or "publicar" in low or "someter" in low:
         guidance="La revista puede orientar desde temprano, pero el readiness interno no equivale a aceptación editorial externa."
         next_action="Revisar T29 y requisitos vigentes de la revista objetivo."
-    elif "ia" in low or "agente" in low or "gpt" in low or "rag" in low:
+    elif re.search(r"\b(ia|agentes?|gpt|rag)\b|inteligencia artificial",low):
         guidance="Si la IA participa materialmente, deben documentarse tarea, modelo/proveedor, datos, permisos, evaluación, supervisión, monitoreo y retiro."
         next_action="Completar T28 y revisar ética/datos antes de avanzar."
     else:
@@ -111,12 +111,52 @@ def build_answer(message, route, evidence, templates):
     parts.append("**Próxima acción:** " + next_action)
     return "\n\n".join(parts), state, next_action
 
+def local_delimitation(project_id, message):
+    """Guided local dialogue; student statements are not verified evidence."""
+    import unicodedata
+    low=''.join(c for c in unicodedata.normalize('NFD',message.lower())
+                if unicodedata.category(c)!='Mn')
+    start=any(x in low for x in ('delimitar','comenzar','empezar')) and ('investig' in low or 'preguntas' in low)
+    questions=('1. ¿A quiénes estudiarás y cómo delimitarás ese grupo (por ejemplo, programa, semestre e institución)?\n'
+               '2. ¿Qué fenómeno o uso concreto quieres estudiar y qué dificultad o resultado deseas comprender?\n'
+               '3. ¿En qué lugar y período harás el estudio, y a qué participantes o trabajos puedes acceder?')
+    waiting='DELIMITACIÓN: ESPERANDO RESPUESTAS'
+    if start:
+        return questions, waiting, 'Responder con 1, 2 y 3 en líneas separadas.'
+    if 'salir de delimitacion' in low:
+        return ('Has salido de la delimitación. Puedes escribir una nueva consulta.', 'EN CONSTRUCCIÓN', 'Escribir una nueva consulta.')
+    history=get_trace(project_id,1)
+    if not history or history[0]['decision_state']!=waiting:
+        return None
+    matches=list(re.finditer(r'(?:^|\n)\s*([123])[.)]\s*',message))
+    responses={}
+    for i,m in enumerate(matches):
+        end=matches[i+1].start() if i+1<len(matches) else len(message)
+        responses[m.group(1)]=message[m.end():end].strip()
+    if len(matches)!=3 or set(responses)!={'1','2','3'} or any(not x for x in responses.values()):
+        return ('Para continuar, responde las tres preguntas en un solo mensaje, con 1, 2 y 3 en líneas separadas. '
+                'Para cambiar de tema, escribe «salir de delimitación».\n\n'+questions,
+                waiting, 'Completar las tres respuestas numeradas.')
+    summary='\n'.join(label+responses[n] for n,label in (
+        ('1','Participantes propuestos: '),('2','Uso y dificultad por estudiar: '),
+        ('3','Lugar, período y acceso propuestos: ')))
+    return ('Delimitación preliminar según tus respuestas:\n\n'+summary+
+            '\n\nEstos datos son propuestas tuyas; todavía no constituyen evidencia verificada. '
+            'Antes de elegir metodología, redacta una pregunta que vincule los participantes, '
+            'el uso concreto y el contexto indicado. Si algún aspecto sigue sin definir, indícalo.\n\n'
+            '¿Cuál sería tu pregunta de investigación con esta delimitación?',
+            'DELIMITACIÓN: BORRADOR', 'Redactar la pregunta para revisión docente.')
+
 def answer(project_id, message):
     route=route_message(message)
     allowed=[d for d in route["documents"] if re.fullmatch(r"\d{2}",str(d))]
     evidence=knowledge_search(message, allowed_docs=allowed or None, top_k=6)
     templates=activate_templates(message)
     deterministic,state,next_action=build_answer(message,route,evidence,templates)
+    local=local_delimitation(project_id,message) if os.getenv('SIPRAI_AI_PROVIDER','local')=='local' else None
+    if local:
+        deterministic,state,next_action=local
+        templates=[]
     project=get_project(project_id)
     decision_rows=get_decisions(project_id,20)
     grounded_context={
