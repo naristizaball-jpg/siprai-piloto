@@ -116,6 +116,8 @@ def local_delimitation(project_id, message):
     import unicodedata
     low=''.join(c for c in unicodedata.normalize('NFD',message.lower())
                 if unicodedata.category(c)!='Mn')
+    is_question=('?' in message or '¿' in message or re.match(
+        r'^\s*(?:(?:mi pregunta(?: de investigacion)?|pregunta)\s*[:：]\s*)?(como|que|cual|cuales|por que|en que medida)\b',low) is not None)
     start=any(x in low for x in ('delimitar','comenzar','empezar')) and ('investig' in low or 'preguntas' in low)
     questions=('1. ¿A quiénes estudiarás y cómo delimitarás ese grupo (por ejemplo, programa, semestre e institución)?\n'
                '2. ¿Qué fenómeno o uso concreto quieres estudiar y qué dificultad o resultado deseas comprender?\n'
@@ -139,7 +141,7 @@ def local_delimitation(project_id, message):
         summary=context['answer'].split('Delimitación preliminar según tus respuestas:\n\n')[-1].split('\n\n')[0]
         if context['decision_state']==review:
             summary=context['answer'].split('Contexto propuesto por ti:\n')[1].split('\n\n')[0]
-            if '?' not in message and not re.search(r'\b(como|que|cual|cuales|por que|en que medida)\b',low):
+            if not is_question:
                 return ('Evidencia o aclaración propuesta por ti:\n'+message.strip()+
                         '\n\nContexto propuesto por ti:\n'+summary+
                         '\n\nAntes de recoger información, relaciona cada evidencia con lo que quieres comprender. '
@@ -148,7 +150,7 @@ def local_delimitation(project_id, message):
                         '¿Qué fuente usarás y qué registrarás en ella? Para reformular, escribe la pregunta completa. '
                         'Para cambiar de tema, escribe «salir de delimitación».',
                         review,'Definir fuente y registro de evidencia para revisión docente.')
-        if '?' not in message and not re.search(r'\b(como|que|cual|cuales|por que|en que medida)\b',low):
+        if not is_question:
             return ('Seguimos revisando tu pregunta de investigación. Escribe la pregunta completa para contrastarla con esta delimitación:\n\n'
                     'Delimitación preliminar según tus respuestas:\n\n'+summary,
                     draft,'Escribir la pregunta completa o «salir de delimitación».')
