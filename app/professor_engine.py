@@ -199,14 +199,19 @@ def local_delimitation(project_id, message):
             return ('Seguimos revisando tu pregunta de investigación. Escribe la pregunta completa para contrastarla con esta delimitación:\n\n'
                     'Delimitación preliminar según tus respuestas:\n\n'+summary,
                     draft,'Escribir la pregunta completa o «salir de delimitación».')
+        verification_guidance=''
+        if (re.search(r'\bia\b|inteligencia artificial',low)
+                and re.search(r'\b(?:verific\w*|contrast\w*|comprob\w*|comprueb\w*|valid\w*)\b',low)):
+            verification_guidance=(
+                'Para precisar qué significa verificar los datos y las respuestas de la IA, '
+                'puedes observar si se consultan fuentes originales, se comparan cifras o se revisan cálculos. '
+                'Son ejemplos de posibles criterios, no resultados del estudio.\n\n')
         return ('Pregunta propuesta para revisión:\n'+message.strip()+
                 '\n\nContexto propuesto por ti:\n'+summary+
                 '\n\nRevisión orientada en modo local: contrasta tu pregunta con los participantes, el fenómeno, el lugar y el período que propusiste. '
                 'Esta guía no comprueba automáticamente la coherencia semántica ni aprueba la pregunta. '
-                'Si cambiaste alguno de esos elementos, explica el cambio antes de avanzar.\n\n'
-                'Para precisar qué significa verificar los datos y las respuestas, si ese es tu fenómeno de estudio, '
-                'puedes observar si se consultan fuentes originales, se comparan cifras o se revisan cálculos. '
-                'Son ejemplos de posibles criterios, no resultados del estudio.\n\n'
+                'Si cambiaste alguno de esos elementos, explica el cambio antes de avanzar.\n\n'+
+                verification_guidance+
                 '¿Qué evidencia concreta necesitarías recoger para responder tu pregunta? '
                 'Puedes reformular la pregunta en otro mensaje. Para cambiar de tema, escribe «salir de delimitación».',
                 review,'Precisar la evidencia necesaria y revisar la pregunta con el docente.')
