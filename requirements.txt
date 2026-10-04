@@ -3,3 +3,5 @@ uvicorn==0.35.0
 pypdf==5.9.0
 python-multipart==0.0.20
 itsdangerous==2.2.0
+streamlit
+openai
